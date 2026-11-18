@@ -136,8 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67c4722ef7874fc4f9e6b21a5d3cabd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InversionController
-  effectMaterial: {fileID: 2100000, guid: 224555ab409f8094ea562ff8bbd2cd9f, type: 2}
   originalMaterial: {fileID: 2100000, guid: 8702e5faff03f3f4ebbe2e6740cfd1c5, type: 2}
+  invertedMaterial: {fileID: -876546973899608171, guid: acd2029edd75eaf48afb946a5476c46d, type: 3}
   inverted: 0
 --- !u!1 &1257715874
 GameObject:

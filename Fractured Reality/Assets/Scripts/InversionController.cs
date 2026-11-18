@@ -2,12 +2,10 @@ using UnityEngine;
 
 public class InversionController : MonoBehaviour
 {
-    public Material effectMaterial;
-
-    private Renderer rend;
-    // might need to be an array if you need to support multiple material indicies on one object
     public Material originalMaterial;
+    public Material invertedMaterial;
     public bool inverted;
+    private Renderer rend;
 
     void Start()
     {
@@ -16,13 +14,13 @@ public class InversionController : MonoBehaviour
 
     private void Update()
     {
-        if (!inverted)
+        if (!inverted) //Changes the selected material depending on if the player is in the inverted world or not
         {
             rend.sharedMaterial = originalMaterial;
         }
         else
         {
-            rend.sharedMaterial = effectMaterial;
+            rend.sharedMaterial = invertedMaterial;
         }
     }
 
