@@ -8,7 +8,7 @@ public class FlipController : MonoBehaviour
 
     private void Update()
     {
-        if (!flipped) //Changes the selected material depending on if the player is in the inverted world or not
+        if (!flipped) //Flips the position of all objects when in the inverted world
         {
             originalFlip();
         }
