@@ -10,17 +10,16 @@ public class player_movement : MonoBehaviour
 {
     public float horizontalSpeed;
     public float verticalSpeed;
-    private CharacterController controller;
+    Rigidbody2D rb;
     float xInput;
     float yInput;
     //public Animator animations;
-    //public InputActionReference move;
+    public InputActionReference move;
     //public InputActionReference restart;
     //public InputActionReference pause;
     //public InputActionReference menu;
     //public InputActionReference close; //Closing the pause menu
     private Vector2 _moveDirection;
-    private Vector2 moveInput;
     //public GameObject pauseMenu;
     //public GameObject settingsMenu;
     //public GameObject buttonDisplay;
@@ -29,7 +28,7 @@ public class player_movement : MonoBehaviour
 
 
 
-    void Awake() => controller = GetComponent<CharacterController>();
+    void Awake() => rb = GetComponent<Rigidbody2D>();
 
 
 
@@ -66,7 +65,7 @@ public class player_movement : MonoBehaviour
         //buttonDisplay.SetActive(true);
         //Time.timeScale = 1;
         //}
-        //_moveDirection = move.action.ReadValue<Vector2>();
+        _moveDirection = move.action.ReadValue<Vector2>();
         //if (restart.action.triggered)
         //{
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //Reloads the game when restart button is pressed
@@ -92,17 +91,11 @@ public class player_movement : MonoBehaviour
         //}
     }
 
-    public void Move(InputAction.CallbackContext context)
-    {
-        moveInput = context.ReadValue<Vector2>();
-    }
-
 
     void FixedUpdate()
     {
         //Help with code for setting animations comes from https://www.youtube.com/watch?v=AdQz2wStdLY&t=1s
-        Vector2 _movedirection = new Vector2(_moveDirection.x * horizontalSpeed, _moveDirection.y * verticalSpeed);
-        controller.Move(_movedirection * Time.deltaTime);
+        rb.linearVelocity = new Vector2(_moveDirection.x * horizontalSpeed, _moveDirection.y * verticalSpeed);
 
     }
 

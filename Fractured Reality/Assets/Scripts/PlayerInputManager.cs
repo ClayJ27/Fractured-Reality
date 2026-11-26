@@ -1,44 +1,23 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Windows;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerInputManager : MonoBehaviour
 {
 
-    [SerializeField] private GameObject playerPrefab;
-    [SerializeField] private Transform[] spawnPoints;
+    public Transform[] spawnPoints;
+    private int m_playerCount;
 
 
-    private bool keyboardJoined = false;
-    private bool gamepadJoined = false;
-
-
-    // Update is called once per frame
-    void Update()
+    public void OnPlayerJoined(PlayerInput playerInput)
     {
-        if (Keyboard.current == null) return;
-
-        if (!keyboardJoined && Keyboard.current.enterKey.wasPressedThisFrame)
+        playerInput.transform.position = spawnPoints[m_playerCount].transform.position;
+        if (m_playerCount == 0 )
         {
-            var player = PlayerInput.Instantiate(playerPrefab, controlScheme: "Keyboard", pairWithDevice: Keyboard.current);
-            if (spawnPoints.Length > 0)
-            {
-                player.transform.position = spawnPoints[0].position;
-            }
-
-            keyboardJoined = true;
+            playerInput.GetComponent<Rigidbody2D>();
         }
+        m_playerCount++;
 
-        foreach (var gamePad in Gamepad.all)
-        {
-            if (!gamepadJoined && gamePad.startButton.wasPressedThisFrame)
-            {
-                var player = PlayerInput.Instantiate(playerPrefab, controlScheme: "Gamepad", pairWithDevice: gamePad);
-                if (spawnPoints.Length > 1)
-                {
-                    player.transform.position = spawnPoints[1].position;
-                }
-                gamepadJoined = true;
-            }
-        }
     }
 }

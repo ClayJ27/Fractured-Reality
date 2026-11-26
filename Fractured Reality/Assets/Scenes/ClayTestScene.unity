@@ -353,7 +353,7 @@ MonoBehaviour:
   m_NotificationBehavior: 0
   m_MaxPlayerCount: 2
   m_AllowJoining: 1
-  m_JoinBehavior: 2
+  m_JoinBehavior: 0
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -410,7 +410,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae460ffcf5ce12c4c8156cadb9b9fb25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInputManager
-  playerPrefab: {fileID: 3678778634045235699, guid: 3fe763b6a9801dc42ba68f4bff02a5ce, type: 3}
   spawnPoints:
   - {fileID: 2125113802}
   - {fileID: 905041726}
